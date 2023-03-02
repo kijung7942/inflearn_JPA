@@ -48,4 +48,13 @@ public class Item {
         this.stockQuantity = restStock;
     }
 
+    /**
+     * 값 수정
+     */
+    public void changeItem(String name, int price, int strockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = strockQuantity;
+    }
+
 }
