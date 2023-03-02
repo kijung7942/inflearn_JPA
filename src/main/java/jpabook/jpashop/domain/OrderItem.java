@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
     @Id @GeneratedValue
     @Column(name="order_item_id")
@@ -47,9 +50,8 @@ public class OrderItem {
     }
 
     //== 조회 로직 ==//
-
     /**
-     * 주문 상품 전체 조회
+     * 주문 상품 전체 금액 조회
      * @return 주문 금액 * 주문 수량
      */
     public int getTotalPrice() {
