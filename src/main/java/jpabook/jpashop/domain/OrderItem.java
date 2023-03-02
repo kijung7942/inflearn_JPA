@@ -27,8 +27,32 @@ public class OrderItem {
     private int orderPrice; // 주문 가격
     private int count; // 주문 수량
 
+
+    //== 생성 메서드 ==// : 쿠폰이나 할인 등 로직이 들어갈 수 있기 때문
+    public static OrderItem createOrderItem (Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+
+        // TODO: 할인 등의 로직
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
     //== 비즈니스 로직 ==//
     public void cancel() {
         getItem().addStock(count);
+    }
+
+    //== 조회 로직 ==//
+
+    /**
+     * 주문 상품 전체 조회
+     * @return 주문 금액 * 주문 수량
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
     }
 }
