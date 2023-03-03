@@ -61,5 +61,20 @@ public class OrderRepository {
         ).getResultList();
     }
 
-
+    /**
+     * jpql에 distinct를 주면 쿼리를 날릴 때도 distinct를 주고
+     * 루트 엔티티의 식별값이 같으면 중복제거를 해준다.(distinct 안하면 엔티티 -4개 나옴)
+     * @return
+     */
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i", Order.class)
+//                .setFirstResult(1)  // Order 입장에서 OneToMany이기 때문에 쓰면 안됨.
+//                .setMaxResults(100) // 페이징 처리를 위함
+                .getResultList();
+    }
 }
