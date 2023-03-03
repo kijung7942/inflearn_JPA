@@ -1,0 +1,8 @@
+### 1.주문 조회
+GET {{order-api}}/api/v1/simple-orders
+
+### 2.주문 조회
+GET {{order-api}}/api/v2/simple-orders
+
+### 3.주문 조회
+GET {{order-api}}/api/v3/simple-orders
