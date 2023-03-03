@@ -1,6 +1,21 @@
-### 1. 멤버 id 가져오기
-GET http://localhost:8080/api/v1/members
+### 1. 멤버 등록하기
+POST {{member-api}}/api/v2/members
 Content-Type: application/json
+
 {
- "name": "hello",
+ "name": "hello2"
 }
+
+### 2. 멤버 수정하기
+PUT {{member-api}}/api/v2/members/1
+Content-Type: application/json
+
+{
+  "name": "newHello"
+}
+
+### 3. 멤버 조회하기
+GET {{member-api}}/api/v1/members
+
+### 4. 멤버 조회하기
+GET {{member-api}}/api/v2/members
