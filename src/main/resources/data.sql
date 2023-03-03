@@ -1,2 +1,0 @@
-insert into member (member_id, city, street, zipcode, name) values (1, '도시', '거리', '123-123', '멤버1');
-insert into member (member_id, city, street, zipcode, name) values (2, '도시2', '거리2', '123-456', '멤버2');
