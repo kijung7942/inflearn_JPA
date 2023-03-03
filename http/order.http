@@ -9,3 +9,6 @@ GET {{order-api}}/api/v3/simple-orders
 
 ### 4.주문 조회
 GET {{order-api}}/api/v4/simple-orders
+
+### 5.주문 조회
+GET {{order-api}}/api/v1/orders
