@@ -21,3 +21,6 @@ GET {{order-api}}/api/v3/orders
 
 ### 8.주문 조회(collection)
 GET {{order-api}}/api/v3.1/orders?offset=0&limit=100
+
+### 9.주문 조회(collection)
+GET {{order-api}}/api/v4/orders
