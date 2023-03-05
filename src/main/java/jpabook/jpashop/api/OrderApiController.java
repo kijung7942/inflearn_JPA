@@ -9,6 +9,7 @@ import jpabook.jpashop.repository.OrderSearch;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -53,8 +54,15 @@ public class OrderApiController {
      *       -> 돌아가긴 하는데 잘못된 데이터가 나올 가능성이 큼.
      */
     @GetMapping("/api/v3/orders")
-    public List<OrderDto> findAllWithItem() {
+    public List<OrderDto> ordersV3() {
         List<Order> oders = orderRepository.findAllWithItem();
+        return oders.stream().map(OrderDto::new).collect(Collectors.toList());
+    }
+
+    @GetMapping("/api/v3.1/orders")
+    public List<OrderDto> ordersV3_paging(@RequestParam(defaultValue = "1") int offset,
+                                          @RequestParam(defaultValue = "100") int limit) {
+        List<Order> oders = orderRepository.findAllWithMemberDelivery(offset, limit);
         return oders.stream().map(OrderDto::new).collect(Collectors.toList());
     }
 

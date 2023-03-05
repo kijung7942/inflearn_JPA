@@ -13,7 +13,11 @@ spring:
       hibernate:
 #        show_sql: true # 얘는 System.out 으로 찍는거임  밑에 로그를 이용해서 찍어야함.
         format_sql: true
-#        default_batch_fetch_size: 1000 #최적화 옵션
+        default_batch_fetch_size: 1000 #최적화 옵션(SQL IN절 사용) 값은 100 ~ 1000을 추천(IN절에 들어갈 파라미터 갯수)
+        # 100으로 설정 : 쿼리가 여러번 나갈 수 있으나 순간부하는 적을 수 있음.
+        # 1000으로 설정 : DB에서 순간적으로 뽑아내야 하므로 순간 부하가 올라 갈 수 있음.
+        # 그러나 100으로 설정하건 1000으로 설정하건 뽑아오는 데이터 양이 같다면 필요한 메모리는 같음
+        # 즉, 100으로 한다고 해서 어플리케이션 전체 부하가 적어지는 것은 아님.
 
 logging.level:
   org.hibernate.SQL: debug

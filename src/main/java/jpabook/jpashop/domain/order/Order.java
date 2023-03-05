@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.FetchType.*;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -30,6 +30,8 @@ public class Order {
     @JoinColumn(name="member_id")
     private Member member;
 
+//    @BatchSize(size = 1000) // 개별적으로 할때는 @BatchSize 어노테이션을 붙여주면 된다.(SQL IN 절 사용)
+    // 엔티티에 붙이거나 컬렉션 필드에 붙여주면 됨. -> 보통은 application.yml 같은 곳에 전체적인 배치 사이즈를 줌
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
